@@ -4,11 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>LetterGame</title>
+    <title>The Psychi Game</title>
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.slim.js"
+    integrity="sha256-BTlTdQO9/fascB1drekrDVkaKd9PkwBymMlHOiG+qLI="
+    crossorigin="anonymous"></script>
+
 </head>
 <body>
     
-    <h1> LetterGame</h1>
+    <h1> The Psychi Game</h1>
+    <div>
+        <h2> Guess what letter I'm thinking of</h2>
+        <p id="wins-text"> win: </p>
+        <p id="losses-text"> Losses: </p>
+        <p id="guesses-left"> Guesses Left: </p>
+        <p id="guesses"> Your Guesses so Far: </p>
+    </div>
+
+<script type="text/javascript">
+
+    $(document).ready(function() {
+
+    var wins = 0;
+    var losses = 0;
+    var guessesLeft = 0;
+    var guesses = 0; 
+
+    var winsText = document.getElementById("wins-text");
+    var lossesText = document.getElementById("losses-text");
+    var guessLeft = document.getElementById("guess-left");
+    var guesses = document.getElementById("guesses");
+
+    var computerChoices = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+
+    document.onkeyup = function(event){
+    var userGuess = event.key;
+    var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+    if (userGuess === computerGuess) {
+        wins++;
+        console.log(wins+"win")
+        
+    }
+    else {
+        losses++;
+        console.log(losses+"loss")
+    }
+
+    winsText.textContent = "wins: " + wins;
+    lossesText.textContent = "losses: " + losses;
+    guessLeft.textContent = "guessLeft: " + guessesLeft;
+    guesses.textContent = "guesses: " + guesses; 
+    };
+
+});
+</script>
 
 </body>
 </html>
