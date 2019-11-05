@@ -28,13 +28,14 @@
 
     var wins = 0;
     var losses = 0;
-    var guessesLeft = 0;
+    var guessesLeft = 10;
     var guesses = 0; 
 
-    var winsText = document.getElementById("wins-text");
-    var lossesText = document.getElementById("losses-text");
-    var guessLeft = document.getElementById("guess-left");
-    var guesses = document.getElementById("guesses");
+//JQUERY 
+    var winsText = $("#wins-text");
+    var lossesText = $("#losses-text");
+    var guessLeftDiv= $("#guesses-left");
+    var guessesDiv = $("#guesses");
 
     var computerChoices = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 
@@ -44,18 +45,19 @@
     if (userGuess === computerGuess) {
         wins++;
         console.log(wins+"win")
-        
-    }
-    else {
+    } else {
         losses++;
+        guesses++;
+        guessesLeft--;
         console.log(losses+"loss")
+        console.log(guesses+"guesses")
     }
-
-    winsText.textContent = "wins: " + wins;
-    lossesText.textContent = "losses: " + losses;
-    guessLeft.textContent = "guessLeft: " + guessesLeft;
-    guesses.textContent = "guesses: " + guesses; 
-    };
+    
+    winsText.text("wins: " + wins);
+    lossesText.text("losses: " + losses);
+    guessLeftDiv.text("guessLeft: " + guessesLeft);
+    guessesDiv.text("guesses: " + guesses);
+    }
 
 });
 </script>
